@@ -1,12 +1,13 @@
 const fs = require('fs')
 const path = require('path')
-
 const DIR = path.resolve(__dirname, 'styles')
+
 fs.readdir(DIR, { withFileTypes: true } ,  (err, files) => {
     if (err) throw err
 
     let bundle = ''
     let promises = []
+
     files.forEach(e=> {
        if(path.extname(path.resolve(DIR, e.name)).toLowerCase() === '.css') {
            promises.push(new Promise((res, rej) => {
@@ -25,4 +26,3 @@ fs.readdir(DIR, { withFileTypes: true } ,  (err, files) => {
         })
     })
 })
-
