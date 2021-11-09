@@ -16,8 +16,8 @@ fs.readdir(path.resolve(__dirname, 'secret-folder'), { withFileTypes: true } , f
             console.error('Could not list the directory.');
           }
           else {
-            const fileName = file.name.split('.');
-            console.log(fileName.slice(fileName.length - 2, -1)[0] + ' - ' + fileName.slice(-1) + ' - ' + Math.round(stats.size/1000 )+ 'KB');
+            const fileName = path.parse(file.name)
+            console.log(fileName.name + ' - ' + fileName.ext.replace('.','') + ' - ' + stats.size + 'B');
           }
         });
       }
